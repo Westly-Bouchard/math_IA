@@ -3,7 +3,7 @@ boolean resetWasPressed = false;
 
 final int WIDTH = 1280;
 final int HEIGHT = 720;
-
+//Oooo, wow a comment
 void setup() {
   size(1280, 720);
   smooth();
