@@ -1,26 +1,24 @@
 Graph graph;
-boolean resetWasPressed = false;
+boolean allowGeneration = true;
 
-final int WIDTH = 1280;
-final int HEIGHT = 720;
-//Oooo, wow a comment
 void setup() {
   size(1280, 720);
   smooth();
-  //noStroke();
-  
-  background(18,18,18);
-  
-  graph = new Graph(10);
+  background(18, 18, 18);
 }
 
 void draw() {
-  background(256, 256, 256);  
-  if (keyPressed && key == ENTER && !resetWasPressed) {
-    resetWasPressed = true;
-    graph = new Graph(10);
-  } else {
-    resetWasPressed = false;
+  background(18, 18, 18);
+  
+  if (keyPressed && key == ENTER && allowGeneration) {
+    println("Regenerating graph");
+    graph = new Graph(20);
+    allowGeneration = false;
+  } else if (!allowGeneration && !keyPressed) {
+    println("Generation unblocked");
+    allowGeneration = true;
+  } 
+  if(graph != null) {
+   graph.draw(); 
   }
-  graph.draw();
 }

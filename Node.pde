@@ -1,17 +1,14 @@
-public class Node {
-  private float x;
-  private float y;
+class Node {
+  final int x;
+  final int y;
   
- Node(int x, int y) {
-   this.x = x;
-   this.y = y;
- }
- 
- Node() {
-   this(0, 0); 
- }
- 
- public float getX() { return this.x; }
- public float getY() { return this.y; }
- 
+  public Node(int x, int y) {
+    this.x = x;
+    this. y = y;
+  }
+  
+  @Override
+  public String toString() {
+    return "(" + x + ", " + y + ")";
+  }
 }

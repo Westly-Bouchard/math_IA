@@ -1,51 +1,37 @@
-public class Graph {
-  private ArrayList<Node> nodes;
-  private int numNodes;
+class Graph {
+  private final ArrayList<Node> nodes = new ArrayList<Node>();
+
   
-  public Graph(int numNodes) {
-    this.numNodes = numNodes;
-    int scale = numNodes * 3;
-    int numsX[] = new int[(int) WIDTH / scale];
-    int numsY[] = new int[(int) HEIGHT / scale];
-    int xMax = numsX.length - 1;
-    int yMax = numsY.length - 1;
-    for (int i = 0; i < numsX.length; i++) {
-     numsX[i] = scale + (i * scale);
-    }
-    for (int i = 0; i < numsY.length; i++) {
-     numsY[i] = scale + (i * scale);
-    }
-    
-    int xPose = 0;
-    int yPose = 0;
-    this.nodes = new ArrayList<Node>();
-    for (int i = 0; i < numNodes; i++) {
-      int xr = (int) random(0, xMax);
-      xPose = numsX[xr];
-      numsX[xr] = numsX[xMax];
-      numsX[xMax] = xPose;
-      xMax--;
+  Graph(int count) {
+    while (nodes.size() != count) {
+      int x = (int) random(width - 30) + 15;
+      int y = (int) random(height - 30) + 15;
       
-      int yr = (int) random(0, yMax);
-      yPose = numsY[yr];
-      numsY[yr] = numsY[yMax];
-      numsY[yMax] = yPose;
-      yMax--;
+      boolean safe = true;
+      for (Node node : nodes) {
+        if (Math.abs(node.x - x) < 10 && Math.abs(node.y - y) < 10) {
+          safe = false;
+          println("Skipping node at " + new Node(x, y));
+          break;
+        }
+      }
       
-      this.nodes.add(new Node(xPose, yPose));
+      if (safe) {
+        Node node = new Node(x, y);
+        println("Added node at " + node);
+        nodes.add(node);
+      }
     }
     
-    
-  }
-  
-  public double getDistance(Node node1, Node node2) {
-   return dist(node1.getX(), node1.getY(), node2.getX(), node2.getY());
+    println("Generated " + count + " nodes:");
+    println(nodes);
   }
   
   public void draw() {
+    fill(187, 134, 252);
     for (Node node: nodes) {
-      fill(187, 134, 252);
-      ellipse(node.getX(), node.getY(), this.numNodes * 3, this.numNodes * 3);
+      ellipse(node.x, node.y, 10, 10);
     }
   }
+
 }
