@@ -1,8 +1,10 @@
 class Graph {
   private final ArrayList<Node> nodes = new ArrayList<Node>();
+  private int count;
 
   
   Graph(int count) {
+    this.count = count;
     while (nodes.size() != count) {
       int x = (int) random(width - 30) + 15;
       int y = (int) random(height - 30) + 15;
@@ -25,6 +27,14 @@ class Graph {
     
     println("Generated " + count + " nodes:");
     println(nodes);
+  }
+  
+  public int getCount() {
+   return this.count; 
+  }
+  
+  public ArrayList<Node> getNodes() {
+   return this.nodes; 
   }
   
   public void draw() {
