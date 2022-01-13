@@ -8,7 +8,7 @@ public class ACOSolver {
   private final int numNodes;
   
   //Matrix for storing pheromone values
-  private double[][] pheromoneMatrix;
+  private Pheromone[][] peromoneMatrix;
   
   //Matrix for storing the distance between nodes
   private double[][] distanceMatrix;
