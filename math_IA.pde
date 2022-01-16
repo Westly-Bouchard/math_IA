@@ -1,5 +1,6 @@
 Graph graph;
 boolean allowGeneration = true;
+ACOSolver ACO;
 
 void setup() {
   size(1280, 720);
@@ -7,16 +8,9 @@ void setup() {
   background(18, 18, 18);
   
   //Testing the distance matrix generation
-  graph = new Graph(3);
-  ACOSolver aco = new ACOSolver(graph);
-  aco.generateDistanceMatrix();
-  double[][] distanceMatrix = aco.getDistanceMatrix();
-  for (int i = 0; i < distanceMatrix.length; i++) {
-   for (int j = 0; j < distanceMatrix.length; j++) {
-    print(distanceMatrix[i][j] + " "); 
-   }
-   println();
-  }
+  graph = new Graph(9);
+  ACO = new ACOSolver(graph);
+  ACO.placeAnts();
 }
 
 void draw() {
@@ -33,4 +27,9 @@ void draw() {
   if(graph != null) {
    graph.draw(); 
   }
+}
+
+void drawPheromoneMatrix() {
+  double[][] pheromoneMatrix = ACO.getPheromoneMatrix;
+  //Have to go through the code to draw the pheromones here
 }
