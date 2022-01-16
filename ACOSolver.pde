@@ -33,6 +33,10 @@ public class ACOSolver {
    }
   }
   
+  public void solve() {
+    
+  }
+
   public double[][] getDistanceMatrix() {
    return this.distanceMatrix; 
   }
